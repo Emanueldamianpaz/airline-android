@@ -55,7 +55,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:text="Origen"
-                    android:textColor="#000000"
+                    android:textColor="#ffffff"
 
                     android:textSize="22sp" />
 
@@ -74,13 +74,15 @@
                     android:id="@+id/destinationToTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
                     android:layout_marginRight="20dp"
                     android:text="Destino"
-                    android:textColor="#000000"
-                    android:textSize="22sp" />
+                    android:textColor="#ffffff"
+                    android:textSize="22sp"
+                    android:layout_alignBaseline="@+id/destinationFromTxt"
+                    android:layout_alignBottom="@+id/destinationFromTxt"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp" />
 
             </RelativeLayout>
 
