@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="#ededed"
+    android:layout_marginRight="10dp"
+    android:background="@android:color/white"
     android:elevation="10dp"
     android:orientation="vertical">
 
@@ -31,8 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="Titulo"
-            android:textColor="#000000"
-            android:textSize="30sp" />
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold" />
     </FrameLayout>
 
     <RelativeLayout
@@ -94,15 +96,18 @@
         android:padding="12dp">
 
         <TextView
-            android:id="@+id/PriceTxt"
+            android:id="@+id/priceTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/ratingTxt"
+            android:layout_marginRight="15dp"
             android:text="Precio"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textColor="#B21B09"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/ratingTxt"

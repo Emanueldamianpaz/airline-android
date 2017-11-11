@@ -1,5 +1,6 @@
 package com.davinci.edu.airline_android.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.davinci.edu.airline_android.R;
 import com.davinci.edu.airline_android.infraestructure.api.ApiClient;
+import com.google.gson.Gson;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -27,23 +29,18 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (apiClient.getUser(usernameTxt.getText().toString(), passwordTxt.getText().toString())) {
-                    Toast.makeText(getBaseContext(), "Login correcto!", Toast.LENGTH_LONG).show();
+                //if (apiClient.getUser(usernameTxt.getText().toString(), passwordTxt.getText().toString())) {
+                if (true) {
 
+                    Intent intent = new Intent(getBaseContext(), ListItemActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getBaseContext().startActivity(intent);
                 } else {
                     Toast.makeText(getBaseContext(), "Login incorrecto!", Toast.LENGTH_LONG).show();
                 }
 
             }
         });
-
-
-
-
-
-
-
-
 
 
     }

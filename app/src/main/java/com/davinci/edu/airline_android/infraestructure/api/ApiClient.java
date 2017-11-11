@@ -2,6 +2,7 @@ package com.davinci.edu.airline_android.infraestructure.api;
 
 import android.os.StrictMode;
 
+import com.davinci.edu.airline_android.infraestructure.models.Flight;
 import com.davinci.edu.airline_android.infraestructure.models.User;
 import com.google.gson.Gson;
 
@@ -56,7 +57,7 @@ public class ApiClient {
     }
 
 
-    public String getListFlights() {
+    public String getListFlightsAsync() {
 
         Call<ResponseBody> result = service.getFlightList();
 
@@ -78,5 +79,23 @@ public class ApiClient {
         });
 
         return responseRequest;
+    }
+
+    public Flight[] getListFlights() {
+
+        Call<ResponseBody> result = service.getFlightList();
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        try {
+            responseRequest = result.execute().body().string();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Flight[] flightList = jsonParser.fromJson(responseRequest, Flight[].class);
+
+        return flightList;
     }
 }

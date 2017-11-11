@@ -1,7 +1,6 @@
 package com.davinci.edu.airline_android.infraestructure.api;
 
 
-import com.davinci.edu.airline_android.infraestructure.models.Airline;
 import com.davinci.edu.airline_android.infraestructure.models.Flight;
 
 import okhttp3.ResponseBody;
