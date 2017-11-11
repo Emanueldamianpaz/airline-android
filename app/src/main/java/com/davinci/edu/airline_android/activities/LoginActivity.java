@@ -1,11 +1,11 @@
 package com.davinci.edu.airline_android.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.davinci.edu.airline_android.R;
 import com.davinci.edu.airline_android.infraestructure.api.ApiClient;
-import com.google.gson.Gson;
 
 public class LoginActivity extends AppCompatActivity {
     private Context context;
@@ -48,6 +47,9 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "", "Espere...", true);
+
                 if (apiClient.getUser(usernameTxt.getText().toString(), passwordTxt.getText().toString())) {
 
                     if (saveUserCheck.isChecked()) {
@@ -57,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                                 .putString("password", passwordTxt.getText().toString())
                                 .apply();
                     }
-
+                    dialog.closeOptionsMenu();
                     Intent intent = new Intent(context, ListItemActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);

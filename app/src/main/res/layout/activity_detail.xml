@@ -6,98 +6,115 @@
     android:layout_height="match_parent"
     tools:context="com.davinci.edu.airline_android.activities.DetailActivity">
 
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/descriptionTxt"
-        android:layout_alignLeft="@+id/descriptionTxt"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/descriptionTxt"
-        android:layout_alignStart="@+id/descriptionTxt"
-        android:layout_marginTop="20dp"
-        android:text="Titulo"
-        android:textColor="#000000"
-        android:textSize="30sp" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txtTitle"
-        android:layout_marginTop="20dp">
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/descriptionTxt"
+            android:layout_alignLeft="@+id/descriptionTxt"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/descriptionTxt"
+            android:layout_alignStart="@+id/descriptionTxt"
+            android:layout_marginTop="20dp"
+            android:text="Titulo"
+            android:textColor="#000000"
+            android:textSize="30sp" />
 
-        <ImageView
-            android:id="@+id/imageView"
+        <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            app:srcCompat="@android:color/holo_blue_bright" />
+            android:layout_below="@+id/txtTitle"
+            android:layout_marginTop="20dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/destinationFromTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/detailFlightImg"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:text="Origen"
-                android:textColor="#000000"
+                android:layout_alignParentTop="true"
+                app:srcCompat="@android:color/holo_blue_bright" />
 
-                android:textSize="22sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/destinationToTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
-                android:text="Destino"
-                android:textColor="#000000"
-                android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/destinationFromTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="Origen"
+                    android:textColor="#000000"
 
-        </RelativeLayout>
+                    android:textSize="22sp" />
 
 
-    </FrameLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@+id/destinationToTxt"
+                    android:layout_toRightOf="@+id/destinationFromTxt"
+                    android:background="@android:color/darker_gray" />
 
-    <TextView
-        android:id="@+id/descriptionTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/frameLayout"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginTop="20dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur suscipit enim at blandit. Nunc in sagittis nulla. Aliquam bibendum felis id diam mattis tempus. Cras a consectetur tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ut gravida orci."
-        android:textAlignment="inherit"
-        android:textColor="#4e4e4e"
-        android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/destinationToTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:text="Destino"
+                    android:textColor="#000000"
+                    android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/backBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/descriptionTxt"
-        android:layout_alignLeft="@+id/descriptionTxt"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/descriptionTxt"
-        android:layout_alignStart="@+id/descriptionTxt"
-        android:layout_marginBottom="28dp"
-        android:text="Volver" />
+            </RelativeLayout>
+
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/descriptionTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/frameLayout"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="20dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur suscipit enim at blandit. Nunc in sagittis nulla. Aliquam bibendum felis id diam mattis tempus. Cras a consectetur tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ut gravida orci."
+            android:textAlignment="inherit"
+            android:textColor="#4e4e4e"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/descriptionTxt"
+            android:layout_alignLeft="@+id/descriptionTxt"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/descriptionTxt"
+            android:layout_alignStart="@+id/descriptionTxt"
+            android:layout_marginBottom="28dp"
+            android:text="Volver" />
+    </RelativeLayout>
+
 </RelativeLayout>

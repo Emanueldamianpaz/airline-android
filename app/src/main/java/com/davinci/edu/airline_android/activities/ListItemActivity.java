@@ -8,7 +8,6 @@ import com.davinci.edu.airline_android.R;
 import com.davinci.edu.airline_android.infraestructure.FlightAdapter;
 import com.davinci.edu.airline_android.infraestructure.api.ApiClient;
 import com.davinci.edu.airline_android.infraestructure.models.Flight;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
