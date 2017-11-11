@@ -7,7 +7,8 @@ public class Flight {
     private String description;
     private double price;
     private Route route;
-
+    private int rating;
+    private String imgURL;
 
     public String getId() {
         return id;
@@ -47,5 +48,21 @@ public class Flight {
 
     public void setRoute(Route route) {
         this.route = route;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
     }
 }
