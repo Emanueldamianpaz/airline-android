@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         context = getBaseContext();
 
-        final ApiClient apiClient = new ApiClient();
+        final ApiClient apiClient = new ApiClient(getBaseContext());
 
         final TextView usernameTxt = (TextView) findViewById(R.id.usernameTxt);
         final TextView passwordTxt = (TextView) findViewById(R.id.passwordTxt);
@@ -48,25 +48,23 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "", "Espere...", true);
-
+                Toast.makeText(context, "Intentando conectar...", Toast.LENGTH_LONG).show();
                 if (apiClient.getUser(usernameTxt.getText().toString(), passwordTxt.getText().toString())) {
 
                     if (saveUserCheck.isChecked()) {
+
                         sharedPreferences = context.getSharedPreferences(getResources().getString(R.string.app_name), MODE_PRIVATE);
                         sharedPreferences.edit()
                                 .putString("username", usernameTxt.getText().toString())
                                 .putString("password", passwordTxt.getText().toString())
                                 .apply();
                     }
-                    dialog.closeOptionsMenu();
                     Intent intent = new Intent(context, ListItemActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 } else {
                     Toast.makeText(context, "Login incorrecto!", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 

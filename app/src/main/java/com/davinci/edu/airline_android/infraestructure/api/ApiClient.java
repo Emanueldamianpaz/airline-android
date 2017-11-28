@@ -1,12 +1,15 @@
 package com.davinci.edu.airline_android.infraestructure.api;
 
+import android.content.Context;
 import android.os.StrictMode;
+import android.widget.Toast;
 
 import com.davinci.edu.airline_android.infraestructure.models.Flight;
 import com.davinci.edu.airline_android.infraestructure.models.User;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -20,12 +23,15 @@ public class ApiClient {
     private ApiService service;
     private String responseRequest;
     private Gson jsonParser;
+    private Context context;
 
-    public ApiClient() {
+
+    public ApiClient(Context context) {
+        this.context = context;
         jsonParser = new Gson();
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://my-json-server.typicode.com/emanueldamianpaz/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
 
         service = retrofit.create(ApiService.class);
@@ -47,55 +53,37 @@ public class ApiClient {
 
         User[] users = jsonParser.fromJson(responseRequest, User[].class);
 
-        for (User user : users) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                authOk = true;
+        if (users != null) {
+            for (User user : users) {
+                if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                    authOk = true;
+                }
             }
-        }
+        } else {
+            Toast.makeText(context, "Error del sistema!", Toast.LENGTH_LONG).show();
+            authOk = false;
 
+        }
         return authOk;
     }
 
 
-    public String getListFlightsAsync() {
+    public void getListFlights(final OnSuccessCallback callback) {
 
-        Call<ResponseBody> result = service.getFlightList();
+        Call<List<Flight>> result = service.getFlightList();
 
-        result.enqueue(new Callback<ResponseBody>() {
+        result.enqueue(new Callback<List<Flight>>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    responseRequest = response.body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            public void onResponse(Call<List<Flight>> call, Response<List<Flight>> response) {
+                callback.execute(response.body());
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                responseRequest = "";
-                t.printStackTrace();
+            public void onFailure(Call<List<Flight>> call, Throwable throwable) {
+                Toast.makeText(context, "Fallo al querer conectarse con el servidor", Toast.LENGTH_SHORT).show();
             }
+
         });
 
-        return responseRequest;
-    }
-
-    public Flight[] getListFlights() {
-
-        Call<ResponseBody> result = service.getFlightList();
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        try {
-            responseRequest = result.execute().body().string();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Flight[] flightList = jsonParser.fromJson(responseRequest, Flight[].class);
-
-        return flightList;
     }
 }
