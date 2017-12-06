@@ -20,6 +20,13 @@
         </activity>
         <activity android:name=".activities.DetailActivity" />
         <activity android:name=".activities.ListItemActivity"></activity>
+        <activity android:name=".activities.MapsActivity"></activity>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBAJF-lhWIH_8kyXK6n2v9EItOGzymhyvk" />
+
     </application>
 
 </manifest>
