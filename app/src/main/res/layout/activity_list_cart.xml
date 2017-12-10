@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.davinci.edu.airline_android.activities.ListItemActivity">
+    tools:context="com.davinci.edu.airline_android.activities.CartListActivity">
 
 
     <!-- Necesario para mostrar el hamburguer en el toolbar y asociarlo al navigation -->
@@ -31,7 +31,7 @@
 
 
             <ListView
-                android:id="@+id/listItemView"
+                android:id="@+id/listCartView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:divider="@android:color/transparent"

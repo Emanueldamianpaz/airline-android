@@ -1,4 +1,4 @@
-package com.davinci.edu.airline_android.infraestructure;
+package com.davinci.edu.airline_android.infraestructure.flight;
 
 
 import android.content.Context;

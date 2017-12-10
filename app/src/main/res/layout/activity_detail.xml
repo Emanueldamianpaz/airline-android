@@ -130,14 +130,23 @@
                     android:id="@+id/backBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/descriptionTxt"
+                    android:text="Volver"
+                    android:layout_alignBaseline="@+id/addBtn"
+                    android:layout_alignBottom="@+id/addBtn"
                     android:layout_alignLeft="@+id/descriptionTxt"
+                    android:layout_alignStart="@+id/descriptionTxt" />
+
+                <Button
+                    android:id="@+id/addBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/descriptionTxt"
                     android:layout_alignParentBottom="true"
                     android:layout_alignRight="@+id/descriptionTxt"
-                    android:layout_alignStart="@+id/descriptionTxt"
-                    android:layout_marginBottom="28dp"
-                    android:text="Volver" />
-
+                    android:text="Agregar"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

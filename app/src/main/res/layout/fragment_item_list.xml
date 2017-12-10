@@ -5,9 +5,10 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:layout_marginRight="10dp"
-    android:background="@android:color/white"
+    android:background="@drawable/item"
     android:elevation="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="5dp">
 
 
     <FrameLayout
@@ -99,15 +100,15 @@
             android:id="@+id/priceTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
             android:text="Precio"
             android:textColor="#B21B09"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="15dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/ratingTxt"

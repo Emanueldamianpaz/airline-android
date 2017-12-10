@@ -1,4 +1,4 @@
-package com.davinci.edu.airline_android.infraestructure;
+package com.davinci.edu.airline_android.infraestructure.flight;
 
 
 import android.content.Context;
@@ -71,7 +71,7 @@ public class FlightAdapter extends BaseAdapter {
         /*
             TODO No anda el ratingBar
         */
-        itemRatingBar.setNumStars(flight.getRating());
+        itemRatingBar.setRating(flight.getRating());
         itemPrice.setText("$" + String.valueOf(flight.getPrice()));
 
 

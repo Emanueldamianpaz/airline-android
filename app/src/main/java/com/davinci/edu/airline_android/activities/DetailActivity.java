@@ -9,8 +9,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.davinci.edu.airline_android.R;
+import com.davinci.edu.airline_android.infraestructure.cart.Cart;
 import com.davinci.edu.airline_android.infraestructure.models.Flight;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
@@ -21,12 +23,14 @@ public class DetailActivity extends AppCompatActivity {
     private Gson jsonParser;
     private Context context;
     private Flight flight;
+    private Cart cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         context = getBaseContext();
+        cart = Cart.getInstance();
 
 
         jsonParser = new Gson();
@@ -40,6 +44,8 @@ public class DetailActivity extends AppCompatActivity {
         TextView detailDestination = (TextView) this.findViewById(R.id.destinationToTxt);
         TextView descriptionTxt = (TextView) this.findViewById(R.id.descriptionTxt);
         Button backButton = (Button) this.findViewById(R.id.backBtn);
+        Button addButton = (Button) this.findViewById(R.id.addBtn);
+
         ImageView mapsLayout = (ImageView) this.findViewById(R.id.mapView);
 
 
@@ -78,6 +84,14 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DetailActivity.super.finish();
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cart.addFlight(flight);
+                Toast.makeText(getBaseContext(), "Vuelo agregado!", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -1,35 +1,33 @@
 package com.davinci.edu.airline_android.activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.davinci.edu.airline_android.R;
 import com.davinci.edu.airline_android.infraestructure.cart.Cart;
-import com.davinci.edu.airline_android.infraestructure.flight.FlightAdapter;
-import com.davinci.edu.airline_android.infraestructure.api.ApiClient;
-import com.davinci.edu.airline_android.infraestructure.api.OnSuccessCallback;
+import com.davinci.edu.airline_android.infraestructure.cart.CartAdapter;
 import com.davinci.edu.airline_android.infraestructure.models.Flight;
 
 import java.util.List;
 
-public class ListItemActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CartListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_item);
+        setContentView(R.layout.activity_list_cart);
 
-        final ApiClient apiClient = new ApiClient(getBaseContext());
+        Cart cart = Cart.getInstance();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,18 +41,15 @@ public class ListItemActivity extends AppCompatActivity implements NavigationVie
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        final ProgressDialog progressDialog = ProgressDialog.show(this, "Vuelos", "Obteniendo el menu...", true, false);
+        ListView itemsFlight = (ListView) findViewById(R.id.listCartView);
 
-        apiClient.getListFlights(new OnSuccessCallback() {
-            @Override
-            public void execute(Object body) {
 
-                ListView itemsFlight = (ListView) findViewById(R.id.listItemView);
-                itemsFlight.setAdapter(new FlightAdapter(getBaseContext(), (List<Flight>) body));
-
-                progressDialog.dismiss();
-            }
-        });
+        if (cart.getFlightList().size() > 0) {
+            itemsFlight.setAdapter(new CartAdapter(getBaseContext(), cart.getFlightList()));
+        } else {
+            Toast.makeText(this, "Carrito vacio!", Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
 
 
     }
@@ -67,23 +62,11 @@ public class ListItemActivity extends AppCompatActivity implements NavigationVie
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.cart:
-                Intent cart = new Intent(this, CartListActivity.class);
-                startActivity(cart);
-                finish();
-                break;
-        }
-        return true;
-    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
+        
             case R.id.close_session:
                 Intent login = new Intent(this, LoginActivity.class);
                 startActivity(login);
